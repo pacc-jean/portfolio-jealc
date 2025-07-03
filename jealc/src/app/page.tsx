@@ -1,3 +1,7 @@
-export default function Page() {
-  return <h1>Hello, Next.js!</h1>
+import Hero from './components/Hero'
+
+export default function HomePage() {
+  return (
+    <Hero />
+  )
 }
