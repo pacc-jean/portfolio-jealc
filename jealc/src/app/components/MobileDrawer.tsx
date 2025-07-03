@@ -35,8 +35,7 @@ export default function MobileDrawer({ isOpen, onClose }: { isOpen: boolean; onC
         <NavItem icon={<Home size={18} />} label="Home" href="/" />
         <NavItem icon={<User size={18} />} label="About" href="/about" />
         <NavItem icon={<Briefcase size={18} />} label="Projects" href="/projects" />
-        
-        <NavItem icon={<HelpCircle size={18} />} label="Help" href="#" />
+        <NavItem icon={<HelpCircle size={18} />} label="Contact" href="/contact" />
       </div>
 
     </motion.div>
