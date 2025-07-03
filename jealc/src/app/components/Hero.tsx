@@ -13,7 +13,7 @@ export default function Hero() {
         Full-Stack Software Developer. Passionate about building useful, beautiful, and impactful digital experiences.
       </p>
       <div className="flex gap-4">
-        <Button href="/Jean-Luc-Kajuga-CV.pdf" download>
+        <Button href="/assets/jean-luc-cv.pdf" download>
           <Download size={18} /> Download CV
         </Button>
         <Button href="/projects" variant="outline">
