@@ -11,7 +11,7 @@ export default function MobileDrawer({ isOpen, onClose }: { isOpen: boolean; onC
       initial={{ x: '-100%' }}
       animate={{ x: isOpen ? 0 : '-100%' }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      className="fixed top-0 left-0 h-80 w-72 bg-white/10 backdrop-blur-md text-white z-[999] shadow-lg rounded-r-3xl p-6"
+      className="fixed top-0 left-0 h-[80%] w-72 bg-white/10 backdrop-blur-md text-white z-[999] shadow-lg rounded-r-3xl p-6"
     >
       {/* Close Button */}
       <div className="flex justify-end mb-4">
