@@ -11,12 +11,12 @@ export default function MobileDrawer({ isOpen, onClose }: { isOpen: boolean; onC
       initial={{ x: '-100%' }}
       animate={{ x: isOpen ? 0 : '-100%' }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      className="fixed top-0 left-0 h-full w-72 bg-white/10 backdrop-blur-md text-white z-[999] shadow-lg rounded-r-3xl p-6"
+      className="fixed top-0 left-0 h-80 w-72 bg-white/10 backdrop-blur-md text-white z-[999] shadow-lg rounded-r-3xl p-6"
     >
       {/* Close Button */}
       <div className="flex justify-end mb-4">
         <button onClick={onClose}>
-          <X className="text-white" />
+          <X className="text-black" />
         </button>
       </div>
 
@@ -28,10 +28,10 @@ export default function MobileDrawer({ isOpen, onClose }: { isOpen: boolean; onC
           height={64}
           className="w-16 h-16 rounded-full border-2 border-white mb-2"
         />
-        <p className="text-lg font-semibold">Hello, I&#39;m Jean Luc</p>
+        <p className="text-lg text-black font-semibold">Hello, I&#39;m Jean Luc</p>
 
       {/* Nav Items */}
-      <div className="flex flex-col gap-4 text-sm">
+      <div className="flex flex-col gap-4 text-black text-sm">
         <NavItem icon={<Home size={18} />} label="Home" href="/" />
         <NavItem icon={<User size={18} />} label="About" href="/about" />
         <NavItem icon={<Briefcase size={18} />} label="Projects" href="/projects" />
