@@ -1,15 +1,16 @@
-import Hero from './components/Hero'
-import AboutSection from './components/AboutSection'
-import ProjectsSection from './components/ProjectsSection'
-import ContactSection from './components/ContactSection'
+import Hero from './components/Hero';
+import AboutSection from './components/AboutSection';
+import ProjectsSection from './components/ProjectsSection';
+import ParallaxProvider from './components/ParallaxProvider';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
-      <Hero />
-      <AboutSection />
-      <ProjectsSection />
-      <ContactSection />
-    </>
-  )
+    <ParallaxProvider>
+      <main>
+        <Hero />
+        <AboutSection />
+        <ProjectsSection />
+      </main>
+    </ParallaxProvider>
+  );
 }

@@ -1,39 +1,72 @@
-'use client'
+"use client";
 
-import ProjectCard from './ProjectCard'
+import ProjectCard from './ProjectCard';
 
-const projects = [
-  {
-    title: 'VORP-EA Website',
-    description: 'Maintaining and building new features for the NGO’s platform — enabling better outreach, engagement, and donor support.',
-    tech: ['React', 'Next.js', 'Tailwind', 'Node.js'],
-    liveUrl: 'https://vorp-ea.vercel.app',
-    githubUrl: '', // if public
-  },
-  {
-    title: 'B&B Booking System',
-    description: 'End-to-end website and booking experience for a local Bed & Breakfast. Integrated payments and Google Maps.',
-    tech: ['React', 'MongoDB', 'Node.js', 'Google APIs'],
-    liveUrl: '', // add later
-    githubUrl: '', // add if needed
-  },
-  {
-    title: 'Portfolio Site',
-    description: 'This very site — designed and coded from scratch as a live résumé and showcase.',
-    tech: ['Next.js', 'Tailwind CSS', 'TypeScript'],
-    githubUrl: 'https://github.com/your-username/portfolio',
-  },
-]
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  demoUrl: string;
+  sourceUrl: string;
+}
 
-export default function ProjectsSection() {
+const ProjectsSection = () => {
+  const projects: Project[] = [
+    {
+      id: 1,
+      title: 'VORP-EA Website',
+      description: 'A lively, responsive website for a newly created NGO; Voice Of Reconciliation and Pacification East Africa (VORP-EA). Features include an informative homepage, programs & team showcase, and donation integration.',
+      technologies: ['React', 'Vite', 'TailWind CSS'],
+      demoUrl: 'https://vorp-ea.vercel.app',
+      sourceUrl: 'https://github.com/pacc-jean/VORP-EA.git'
+    },
+    {
+      id: 2,
+      title: 'My Developer Portfolio',
+      description: 'A showcase of my work as a developer, including projects, skills, and contact information.',
+      technologies: ['Next.js', 'TailWind CSS', 'Vercel'],
+      demoUrl: 'https://jealc.vercel.app',
+      sourceUrl: 'https://github.com/pacc-jean/portfolio-jealc.git'
+    },
+    {
+      id: 3,
+      title: 'Bed and Breakfast Booking App',
+      description: 'A user-friendly web application for booking accommodations at Lion Hill Place, Nakuru. Features include a google maps integration, booking placement and email confirmations, and bookings logging onto google sheets.',
+      technologies: ['Node.js', 'Nodemailer', 'EmailJs', 'Google APIs', 'React', 'TailWind CSS', 'Vite'],
+      demoUrl: 'https://lion-hill-place-frontend.onrender.com',
+      sourceUrl: 'https://github.com/pacc-jean/bed-breakfast.git'
+    },
+  ];
+
   return (
-    <section className="space-y-8">
-      <h2 className="text-3xl font-semibold">Projects</h2>
-      <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
-        ))}
+    <section id="projects" className="py-32 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+      {/* Top border gradient */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+      
+      <div className="max-w-6xl mx-auto px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-black mb-4 text-yellow-400" 
+              style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.5)' }}>
+            Featured Projects
+          </h2>
+          <p className="text-xl text-gray-400 opacity-80">
+            A collection of my recent work and experiments
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={project.id} 
+              project={project} 
+              index={index}
+            />
+          ))}
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default ProjectsSection;
