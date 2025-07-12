@@ -1,0 +1,427 @@
+.contact {
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.contact.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.backgroundEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mouseGlow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  transition: all 0.3s ease;
+}
+
+.floatingParticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.particle:nth-child(odd) {
+  background: rgba(0, 123, 255, 0.3);
+  animation-duration: 12s;
+}
+
+.particle:nth-child(3n) {
+  background: rgba(220, 20, 60, 0.3);
+  animation-duration: 10s;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.iconWrapper {
+  display: inline-block;
+  margin-bottom: 1rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.headerIcon {
+  color: #ffd700;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ffd700, #ffffff, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #cccccc;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  color: #ffd700;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+}
+
+.socialSection {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(42, 42, 42, 0.8) 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.6s ease forwards;
+  animation-delay: var(--animation-delay);
+}
+
+.socialLink:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--hover-color);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover .socialIcon {
+  background: var(--hover-color);
+  transform: scale(1.1);
+}
+
+.socialName {
+  font-weight: 600;
+  flex: 1;
+}
+
+.externalIcon {
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover .externalIcon {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.redditIcon {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.contactSection {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(42, 42, 42, 0.8) 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideIn 0.6s ease forwards;
+  animation-delay: var(--animation-delay);
+}
+
+.contactButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  border-radius: 15px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.contactButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffd700;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  color: #ffd700;
+}
+
+.contactDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contactType {
+  font-size: 0.9rem;
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.contactValue {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.sendIcon {
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.contactButton:hover .sendIcon {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copyButton:hover {
+  background: rgba(0, 123, 255, 0.2);
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.copyButton.copied {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.footer {
+  text-align: center;
+  position: relative;
+}
+
+.pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.footerText {
+  font-size: 1.1rem;
+  color: #cccccc;
+  opacity: 0.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact {
+    padding: 4rem 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .socialSection,
+  .contactSection {
+    padding: 1.5rem;
+  }
+
+  .socialLink,
+  .contactButton {
+    padding: 0.8rem;
+  }
+
+  .socialLink:hover {
+    transform: translateX(5px);
+  }
+}
+
+/* Particle positioning */
+.particle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 1s; }
+.particle:nth-child(3) { top: 30%; left: 30%; animation-delay: 2s; }
+.particle:nth-child(4) { top: 40%; left: 70%; animation-delay: 3s; }
+.particle:nth-child(5) { top: 50%; left: 20%; animation-delay: 4s; }
+.particle:nth-child(6) { top: 60%; left: 90%; animation-delay: 5s; }
+.particle:nth-child(7) { top: 70%; left: 40%; animation-delay: 6s; }
+.particle:nth-child(8) { top: 80%; left: 60%; animation-delay: 7s; }
+.particle:nth-child(9) { top: 90%; left: 15%; animation-delay: 8s; }
+.particle:nth-child(10) { top: 15%; left: 50%; animation-delay: 9s; }
+.particle:nth-child(11) { top: 25%; left: 75%; animation-delay: 10s; }
+.particle:nth-child(12) { top: 35%; left: 25%; animation-delay: 11s; }
+.particle:nth-child(13) { top: 45%; left: 85%; animation-delay: 12s; }
+.particle:nth-child(14) { top: 55%; left: 35%; animation-delay: 13s; }
+.particle:nth-child(15) { top: 65%; left: 65%; animation-delay: 14s; }
+.particle:nth-child(16) { top: 75%; left: 5%; animation-delay: 15s; }
+.particle:nth-child(17) { top: 85%; left: 45%; animation-delay: 16s; }
+.particle:nth-child(18) { top: 95%; left: 55%; animation-delay: 17s; }
+.particle:nth-child(19) { top: 5%; left: 95%; animation-delay: 18s; }
+.particle:nth-child(20) { top: 50%; left: 50%; animation-delay: 19s; }
