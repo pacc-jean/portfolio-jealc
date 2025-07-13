@@ -187,7 +187,19 @@
 
 .marqueeContent {
   display: flex;
-  animation: marqueeScroll 60s linear infinite;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .marqueeContent {
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 480px) {
+  .marqueeContent {
+    animation-duration: 10s;
+  }
 }
 
 .marqueeRow {

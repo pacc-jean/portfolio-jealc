@@ -158,6 +158,7 @@
   transform: translateX(-20px);
   animation: slideIn 0.6s ease forwards;
   animation-delay: var(--animation-delay);
+  min-width: 0; /* Allow flex items to shrink */
 }
 
 .socialLink:hover {
@@ -176,6 +177,7 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .socialLink:hover .socialIcon {
@@ -186,11 +188,16 @@
 .socialName {
   font-weight: 600;
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .externalIcon {
   opacity: 0.6;
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .socialLink:hover .externalIcon {
@@ -224,6 +231,7 @@
   transform: translateX(20px);
   animation: slideIn 0.6s ease forwards;
   animation-delay: var(--animation-delay);
+  min-width: 0; /* Allow flex items to shrink */
 }
 
 .contactButton {
@@ -239,6 +247,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
+  min-width: 0; /* Allow button to shrink */
 }
 
 .contactButton:hover {
@@ -257,6 +266,7 @@
   background: rgba(255, 215, 0, 0.2);
   border-radius: 12px;
   color: #ffd700;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .contactDetails {
@@ -264,6 +274,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  min-width: 0; /* Allow text to shrink */
 }
 
 .contactType {
@@ -275,11 +286,15 @@
 .contactValue {
   font-size: 1rem;
   color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sendIcon {
   opacity: 0.6;
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .contactButton:hover .sendIcon {
@@ -299,6 +314,7 @@
   color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent button from shrinking */
 }
 
 .copyButton:hover {
@@ -380,8 +396,17 @@
     padding: 4rem 1rem;
   }
 
+  .container {
+    padding: 0 0.5rem; /* Add extra padding for smaller screens */
+  }
+
   .title {
     font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 1rem;
   }
 
   .contactGrid {
@@ -392,15 +417,172 @@
   .socialSection,
   .contactSection {
     padding: 1.5rem;
+    margin: 0 0.5rem; /* Add margin to prevent touching edges */
   }
 
-  .socialLink,
-  .contactButton {
-    padding: 0.8rem;
+  .socialLink {
+    padding: 0.8rem 0.6rem; /* Reduce horizontal padding */
+    gap: 0.8rem;
   }
 
   .socialLink:hover {
     transform: translateX(5px);
+  }
+
+  .socialIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialName {
+    font-size: 0.9rem;
+  }
+
+  .contactItem {
+    gap: 0.4rem;
+  }
+
+  .contactButton {
+    padding: 0.8rem 0.6rem; /* Reduce horizontal padding */
+    gap: 0.8rem;
+  }
+
+  .contactIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contactDetails {
+    gap: 0.2rem;
+  }
+
+  .contactType {
+    font-size: 0.8rem;
+  }
+
+  .contactValue {
+    font-size: 0.9rem;
+  }
+
+  .copyButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .contact {
+    padding: 3rem 0.5rem;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .socialSection,
+  .contactSection {
+    padding: 1rem;
+    margin: 0 0.25rem;
+    border-radius: 15px;
+  }
+
+  .socialLink {
+    padding: 0.6rem 0.5rem;
+    gap: 0.6rem;
+    border-radius: 12px;
+  }
+
+  .socialIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .socialName {
+    font-size: 0.85rem;
+  }
+
+  .contactButton {
+    padding: 0.6rem 0.5rem;
+    gap: 0.6rem;
+    border-radius: 12px;
+  }
+
+  .contactIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .contactValue {
+    font-size: 0.85rem;
+  }
+
+  .copyButton {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .sectionTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .footerText {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .contact {
+    padding: 2rem 0.25rem;
+  }
+
+  .socialSection,
+  .contactSection {
+    padding: 0.8rem;
+    margin: 0;
+  }
+
+  .socialLink,
+  .contactButton {
+    padding: 0.5rem 0.4rem;
+    gap: 0.5rem;
+  }
+
+  .socialIcon,
+  .contactIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .copyButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contactValue {
+    font-size: 0.8rem;
+  }
+
+  .socialName {
+    font-size: 0.8rem;
   }
 }
 
