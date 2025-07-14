@@ -37,6 +37,14 @@ const ProjectsSection = () => {
       demoUrl: 'https://lion-hill-place-frontend.onrender.com',
       sourceUrl: 'https://github.com/pacc-jean/bed-breakfast.git'
     },
+    {
+      id: 4,
+      title: 'G.I.A.N.A',
+      description: 'G.I.A.N.A shorthand for (General Interface for AI Navigation and Assistance) is an ambitious, personal, and locally run LLM powered by Ollama + Mistral. I hope to use it as an AI assitant in my projects and systems. It is currently active on my portfolio website, though still in its conception.',
+      technologies: ['Flask', 'Ollama', 'Mistral'],
+      demoUrl: '',
+      sourceUrl: 'https://github.com/pacc-jean/G.I.A.N.A.git'
+    },
   ];
 
   return (
