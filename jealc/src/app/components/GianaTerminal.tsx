@@ -21,15 +21,32 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
 
   const BACKEND_URL = 'http://localhost:5000';
 
-  // Scroll to bottom on message update
+  // Scroll to bottom on new message
   useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [messages]);
 
-  // Trigger /greet with loader sequence
+  // Auto-focus input on open
   useEffect(() => {
+    document.querySelector('input')?.focus();
+  }, []);
+
+  // Restore session from localStorage if available
+  useEffect(() => {
+    const savedSession = localStorage.getItem('giana_session');
+    const savedUser = localStorage.getItem('giana_user');
+    if (savedSession && savedUser) {
+      setSessionId(savedSession);
+      setUsername(savedUser);
+    }
+  }, []);
+
+  // Init /greet only if no session active
+  useEffect(() => {
+    if (sessionId || username) return;
+
     const initGiana = async () => {
       try {
         setMessages([{ role: 'system', content: '[initializing...]' }]);
@@ -39,10 +56,10 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
         setMessages([{ role: 'system', content: '[typing...]' }]);
         await new Promise(res => setTimeout(res, 700));
 
-        const greetRes = await fetch(`${BACKEND_URL}/greet`);
-        const greetData = await greetRes.json();
+        const res = await fetch(`${BACKEND_URL}/greet`);
+        const data = await res.json();
 
-        setMessages([{ role: 'giana', content: greetData.intro }]);
+        setMessages([{ role: 'giana', content: data.intro }]);
       } catch (err) {
         console.error(err);
         setMessages([{ role: 'system', content: 'Error connecting to G.I.A.N.A.' }]);
@@ -50,17 +67,26 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
     };
 
     initGiana();
-  }, []);
+  }, [sessionId, username]);
+
+  // Save session to localStorage
+  useEffect(() => {
+    if (sessionId && username) {
+      localStorage.setItem('giana_session', sessionId);
+      localStorage.setItem('giana_user', username);
+    }
+  }, [sessionId, username]);
 
   const handleSend = async () => {
     if (!input.trim()) return;
+
     const userMsg = input.trim();
     setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
 
     // First input: username
     if (!username) {
       setUsername(userMsg);
-      setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
 
       try {
         const res = await fetch(`${BACKEND_URL}/session`, {
@@ -70,6 +96,7 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
         });
         const data = await res.json();
         setSessionId(data.session_id);
+        setMessages(prev => [...prev, { role: 'giana', content: data.message }]);
         await simulateTyping(data.message);
       } catch (err) {
         console.error(err);
@@ -81,8 +108,6 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
 
     // Normal chat message
     if (sessionId) {
-      setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
-
       try {
         const res = await fetch(`${BACKEND_URL}/chat`, {
           method: 'POST',
@@ -114,7 +139,7 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
         updated[updated.length - 1] = { role: 'giana', content: typedText };
         return updated;
       });
-      await new Promise(res => setTimeout(res, 15)); // Typing speed
+      await new Promise(res => setTimeout(res, 15)); // Simulated typing speed
     }
 
     setIsTyping(false);
