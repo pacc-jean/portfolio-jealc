@@ -58,12 +58,22 @@ const Hero = () => {
         <p className="text-xl md:text-2xl mb-8 text-gray-300 opacity-90">
           Crafting digital experiences with code, creativity, and a touch of magic
         </p>
-        <a 
-          href="#projects" 
-          className="inline-block px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/50"
-        >
-          View My Work
-        </a>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <a 
+            href="#projects" 
+            className="inline-block px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/50"
+          >
+            View My Work
+          </a>
+          <a 
+            href="https://docs.google.com/document/d/1qlSE3zF-bMHA-EoCSMwB18dXNwBiAUY85qi2EsdZv_s/edit?usp=sharing" 
+            download
+            className="inline-block px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/50"
+          >
+            View My CV
+          </a>
+        </div>
+
       </div>
     </section>
   );
