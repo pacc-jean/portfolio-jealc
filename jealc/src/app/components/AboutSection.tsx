@@ -7,6 +7,7 @@ import {
   SiPython, 
   SiHtml5, 
   SiCss3, 
+  SiPhp,
   SiReact, 
   SiNextdotjs, 
   SiNodedotjs, 
@@ -23,7 +24,7 @@ import {
   SiMailchimp, 
   SiLinux 
 } from 'react-icons/si';
-import { FaJava, FaWindows } from 'react-icons/fa';
+import { FaWindows } from 'react-icons/fa';
 import styles from '../styles/AboutSection.module.css';
 
 const AboutSection: React.FC = () => {
@@ -34,9 +35,9 @@ const AboutSection: React.FC = () => {
     { name: 'JavaScript', icon: <SiJavascript className="text-yellow-500" /> },
     { name: 'TypeScript', icon: <SiTypescript className="text-blue-500" /> },
     { name: 'Python', icon: <SiPython className="text-blue-400" /> },
-    { name: 'Java', icon: <FaJava className="text-red-600" /> },
     { name: 'HTML5', icon: <SiHtml5 className="text-orange-500" /> },
     { name: 'CSS3', icon: <SiCss3 className="text-blue-600" /> },
+    { name: 'PHP', icon: < SiPhp className='text-purple-900'/>},
     { name: 'React', icon: <SiReact className="text-cyan-400" /> },
     { name: 'Next.js', icon: <SiNextdotjs /> },
     { name: 'Node.js', icon: <SiNodedotjs className="text-green-500" /> },

@@ -1,18 +1,19 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Linkedin, 
-  Twitter, 
-  Instagram, 
-  MessageCircle, 
-  Mail, 
-  Phone,
-  Send,
-  Copy,
-  ExternalLink,
-  Zap
-} from 'lucide-react';
+import {
+  FaLinkedinIn,
+  FaTwitter,
+  FaInstagram,
+  FaRedditAlien,
+  FaWhatsapp,
+  FaRegPaperPlane,
+  FaRegCopy,
+  FaExternalLinkAlt,
+  FaBolt
+} from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
+import { MdPhone } from 'react-icons/md';
 import styles from '../styles/ContactSection.module.css';
 
 interface SocialLink {
@@ -40,28 +41,28 @@ const ContactSection: React.FC = () => {
   const socialLinks: SocialLink[] = [
     {
       name: 'LinkedIn',
-      icon: <Linkedin size={24} />,
+      icon: <FaLinkedinIn size={24} />,
       url: 'https://www.linkedin.com/in/jean-kajuga-080018315/',
       color: '#0077B5',
       hoverColor: '#005885'
     },
     {
       name: 'X (Twitter)',
-      icon: <Twitter size={24} />,
+      icon: <FaTwitter size={24} />,
       url: 'https://x.com/plaidpeanuts',
       color: '#1DA1F2',
       hoverColor: '#0d8bd9'
     },
     {
       name: 'Instagram',
-      icon: <Instagram size={24} />,
+      icon: <FaInstagram size={24} />,
       url: 'https://www.instagram.com/ean.lc/',
       color: '#E4405F',
       hoverColor: '#d31245'
     },
     {
       name: 'Reddit',
-      icon: <div className={styles.redditIcon}>R</div>,
+      icon: <FaRedditAlien size={24} />,
       url: 'https://www.reddit.com/user/Signal_Function6946/',
       color: '#FF4500',
       hoverColor: '#e03d00'
@@ -73,19 +74,19 @@ const ContactSection: React.FC = () => {
       type: 'email',
       value: 'jean.l.kajuga@gmail.com',
       display: 'jean.l.kajuga@gmail.com',
-      icon: <Mail size={20} />
+      icon: <SiGmail size={20} />
     },
     {
       type: 'phone',
       value: '+254735579266',
       display: '+254 735 579 266',
-      icon: <Phone size={20} />
+      icon: <MdPhone size={20} />
     },
     {
       type: 'whatsapp',
       value: '+254769845876',
       display: '+254 769 845 876',
-      icon: <MessageCircle size={20} />
+      icon: <FaWhatsapp size={20} />
     }
   ];
 
@@ -167,7 +168,7 @@ const ContactSection: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.iconWrapper}>
-            <Zap className={styles.headerIcon} size={32} />
+            <FaBolt className={styles.headerIcon} size={32} />
           </div>
           <h2 className={styles.title}>Let us Connect</h2>
           <p className={styles.subtitle}>
@@ -198,7 +199,7 @@ const ContactSection: React.FC = () => {
                     {social.icon}
                   </div>
                   <span className={styles.socialName}>{social.name}</span>
-                  <ExternalLink size={16} className={styles.externalIcon} />
+                  <FaExternalLinkAlt size={16} className={styles.externalIcon} />
                 </a>
               ))}
             </div>
@@ -228,15 +229,15 @@ const ContactSection: React.FC = () => {
                         {info.display}
                       </span>
                     </div>
-                    <Send size={16} className={styles.sendIcon} />
+                    <FaRegPaperPlane size={16} className={styles.sendIcon} />
                   </button>
-                  
+
                   <button
                     className={`${styles.copyButton} ${copiedItem === info.type ? styles.copied : ''}`}
                     onClick={() => copyToClipboard(info.value, info.type)}
                     title={copiedItem === info.type ? 'Copied!' : 'Copy to clipboard'}
                   >
-                    <Copy size={16} />
+                    <FaRegCopy size={16} />
                   </button>
                 </div>
               ))}
