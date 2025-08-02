@@ -34,7 +34,7 @@ const ProjectsSection = () => {
       title: 'Bed and Breakfast Booking App',
       description: 'A user-friendly web application for booking accommodations at Lion Hill Place, Nakuru. Features include a google maps integration, booking placement and email confirmations, and bookings logging onto google sheets.',
       technologies: ['Node.js', 'Nodemailer', 'EmailJs', 'Google APIs', 'React', 'TailWind CSS', 'Vite'],
-      demoUrl: 'https://lionhillplace.onrender.com',
+      demoUrl: 'https://lionhillplace.vercel.app',
       sourceUrl: 'https://github.com/pacc-jean/bed-breakfast.git'
     },
     {
