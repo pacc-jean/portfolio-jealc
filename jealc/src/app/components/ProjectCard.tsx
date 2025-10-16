@@ -8,7 +8,7 @@ interface Project {
   description: string;
   technologies: string[];
   demoUrl: string;
-  sourceUrl: string;
+  sourceUrl?: string;
 }
 
 interface ProjectCardProps {
@@ -96,14 +96,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             href={project.demoUrl} 
             className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-600/40"
           >
-            Live Demo
+            To Project
           </a>
-          <a 
+          {/*<a 
             href={project.sourceUrl} 
             className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-600/40"
           >
             Source Code
-          </a>
+          </a>*/}
         </div>
       </div>
     </div>
