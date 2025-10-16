@@ -21,29 +21,16 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
 
   const BACKEND_URL = 'http://localhost:5000';
 
-  // Scroll to bottom on new message
   useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [messages]);
 
-  // Auto-focus input on open
   useEffect(() => {
     document.querySelector('input')?.focus();
   }, []);
 
-  // Restore session from localStorage if available
-  useEffect(() => {
-    const savedSession = localStorage.getItem('giana_session');
-    const savedUser = localStorage.getItem('giana_user');
-    if (savedSession && savedUser) {
-      setSessionId(savedSession);
-      setUsername(savedUser);
-    }
-  }, []);
-
-  // Init /greet only if no session active
   useEffect(() => {
     if (sessionId || username) return;
 
@@ -69,14 +56,6 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
     initGiana();
   }, [sessionId, username]);
 
-  // Save session to localStorage
-  useEffect(() => {
-    if (sessionId && username) {
-      localStorage.setItem('giana_session', sessionId);
-      localStorage.setItem('giana_user', username);
-    }
-  }, [sessionId, username]);
-
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -84,7 +63,6 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
     setInput('');
     setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
 
-    // First input: username
     if (!username) {
       setUsername(userMsg);
 
@@ -106,7 +84,6 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
       return;
     }
 
-    // Normal chat message
     if (sessionId) {
       try {
         const res = await fetch(`${BACKEND_URL}/chat`, {
@@ -139,7 +116,7 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
         updated[updated.length - 1] = { role: 'giana', content: typedText };
         return updated;
       });
-      await new Promise(res => setTimeout(res, 15)); // Simulated typing speed
+      await new Promise(res => setTimeout(res, 15));
     }
 
     setIsTyping(false);
@@ -152,13 +129,10 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="relative w-full max-w-4xl h-[80vh]">
-        {/* Glow */}
         <div className="absolute inset-0 bg-yellow-400/20 rounded-xl blur-xl animate-pulse"></div>
         <div className="absolute inset-0 bg-yellow-500/10 rounded-xl blur-2xl animate-pulse" style={{ animationDelay: '0.5s' }}></div>
 
-        {/* Terminal UI */}
         <div className="relative w-full h-full bg-[#0a0a0a] border border-yellow-400/20 rounded-xl shadow-lg overflow-hidden flex flex-col shadow-yellow-400/20">
-          {/* Header */}
           <div className="flex items-center justify-between p-4 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border-b border-yellow-400/20">
             <h2 className="text-yellow-400 font-mono text-lg">G.I.A.N.A</h2>
             <button onClick={onClose} className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
@@ -166,7 +140,6 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
             </button>
           </div>
 
-          {/* Output */}
           <div
             ref={terminalRef}
             className="flex-1 p-4 overflow-y-auto font-mono text-sm bg-gradient-to-b from-[#111] via-[#0a0a0a] to-[#111] scroll-smooth space-y-1"
@@ -196,7 +169,6 @@ const GianaTerminal: React.FC<GianaTerminalProps> = ({ onClose }) => {
             })}
           </div>
 
-          {/* Input */}
           <div className="border-t border-yellow-400/10 p-3 bg-[#111] flex items-center gap-2">
             <span className="text-yellow-500 font-mono text-sm">~$</span>
             <input
