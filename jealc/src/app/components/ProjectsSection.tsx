@@ -29,22 +29,6 @@ const ProjectsSection = () => {
       demoUrl: 'https://jealc.vercel.app',
       sourceUrl: 'https://github.com/pacc-jean/portfolio-jealc.git'
     },
-    {
-      id: 3,
-      title: 'Bed and Breakfast Booking App',
-      description: 'A user-friendly web application for booking accommodations at Lion Hill Place, Nakuru. Features include a google maps integration, booking placement and email confirmations, and bookings logging onto google sheets.',
-      technologies: ['Node.js', 'Nodemailer', 'EmailJs', 'Google APIs', 'React', 'TailWind CSS', 'Vite'],
-      demoUrl: 'https://lion-hill-place-frontend.onrender.com',
-      sourceUrl: 'https://github.com/pacc-jean/bed-breakfast.git'
-    },
-    {
-      id: 4,
-      title: 'G.I.A.N.A',
-      description: 'G.I.A.N.A shorthand for (General Interface for AI Navigation and Assistance) is an ambitious, personal, and locally run LLM powered by Ollama (gemma:2b). I hope to use it as an AI assitant in my projects and systems. It is currently still in its infancy.',
-      technologies: ['Flask', 'Ollama', 'gemma:2b'],
-      demoUrl: '',
-      sourceUrl: 'https://github.com/pacc-jean/G.I.A.N.A.git'
-    },
   ];
 
   return (
