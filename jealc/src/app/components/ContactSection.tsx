@@ -78,14 +78,14 @@ const ContactSection: React.FC = () => {
     },
     {
       type: 'phone',
-      value: '+254735579266',
-      display: '+254 735 579 266',
+      value: '+254798504717',
+      display: '+254 798 504 717',
       icon: <MdPhone size={20} />
     },
     {
       type: 'whatsapp',
-      value: '+254769845876',
-      display: '+254 769 845 876',
+      value: '+254798504717',
+      display: '+254 798 504 717',
       icon: <FaWhatsapp size={20} />
     }
   ];
